@@ -1,7 +1,15 @@
 const router = require("express").Router();
 
+const Users = require("./users-model");
+
 router.get("/", (req, res) => {
-  res.status(200).json({ router: "up" });
+  Users.getUsers()
+    .then((users) => {
+      res.status(200).json({ data: users });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
 });
 
 module.exports = router;
