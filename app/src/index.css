@@ -4,3 +4,8 @@ body {
   color: white;
   text-align: center;
 }
+
+label {
+  display: block;
+  margin: 2%;
+}
