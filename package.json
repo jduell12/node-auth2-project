@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/jduell12/node-auth2-project#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "gitignore": "^0.6.0",
     "jsonwebtoken": "^8.5.1",
