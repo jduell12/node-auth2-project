@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route, useHistory } from "react-router-dom";
 
 //components
-import { Login, Home, UsersList } from "./components/";
+import { Login, Home, UsersList, PrivateRoute } from "./components/";
 
 function App() {
   const history = useHistory();
@@ -17,7 +17,7 @@ function App() {
       <Switch>
         {/* <Route exact path="/register" component={Register}/> */}
         <Route exact path="/login" component={Login} />
-        <Route exact path="/private/list" component={UsersList} />
+        <PrivateRoute exact path="/private/list" component={UsersList} />
         <Route exact path="/" component={Home} />
       </Switch>
     </div>
