@@ -4,7 +4,7 @@ module.exports = {
   getUsers,
   addUser,
   getUserById,
-  getUserBy,
+  getUsersBy,
 };
 
 function getUsers() {
@@ -19,6 +19,6 @@ function getUserById(id) {
   return db("users").where({ id }).first();
 }
 
-function getUserBy(filter) {
+function getUsersBy(filter) {
   return db("users").where(filter).orderBy("id");
 }
