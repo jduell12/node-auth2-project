@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const router = require("express").Router();
 
 const Users = require("../users/users-model");
-const { isValid } = require("../users/users-service");
+const { isValid, loginValid } = require("../users/users-service");
 const constants = require("../config/constants");
 
 router.post("/register", (req, res) => {
@@ -33,5 +33,37 @@ router.post("/register", (req, res) => {
       .json({ message: "Please provide username, password and departmnet" });
   }
 });
+
+router.post("/login", (req, res) => {
+  const { username, password } = req.body;
+
+  if (loginValid(req.body)) {
+    Users.getUserBy({ username: username }).then(([user]) => {
+      if (user && bcryptjs.compareSync(password, user.password)) {
+        const token = signToken(user);
+        res.status(200).json({ message: "Welcome", token });
+      }
+    });
+  } else {
+    res.status(400).json({ message: "Please provide a username and password" });
+  }
+});
+
+//creates a jwt token
+function signToken(user) {
+  const payload = {
+    subject: user.id,
+    username: user.username,
+    department: user.department,
+  };
+
+  const secret = constants.jwtSecret;
+
+  const options = {
+    expiresIn: "1m",
+  };
+
+  return jwt.sign(payload, secret, options);
+}
 
 module.exports = router;
