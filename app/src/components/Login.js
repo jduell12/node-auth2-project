@@ -1,20 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
+import { BASE_URL } from "../utils/constants";
 
 const Login = () => {
+  const history = useHistory();
+
   const initialFormValues = {
     username: "",
     password: "",
   };
 
-  const initialFormErrors = {
-    username: "",
-    password: "",
-  };
+  //   const initialFormErrors = {
+  //     username: "",
+  //     password: "",
+  //   };
 
   const [formValues, setValues] = useState(initialFormValues);
-  const [formErrors, setErrors] = useState(initialFormErrors);
+  //   const [formErrors, setErrors] = useState(initialFormErrors);
 
-  const changeHandler = (name, value) => {
+  const changeHandler = (e) => {
+    const { name, value } = e.target;
     setValues({
       ...formValues,
       [name]: value,
@@ -23,7 +29,21 @@ const Login = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
+
+    const user = {
+      username: formValues.username.trim(),
+      password: formValues.password.trim(),
+    };
+
+    axios
+      .post(`${BASE_URL}/login`, user)
+      .then((res) => {
+        localStorage.setItem("token", res.data.token);
+        history.push("/private/list");
+      })
+      .catch((err) => console.log(err));
   };
+
   return (
     <div>
       <h2>Login</h2>
