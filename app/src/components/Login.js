@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Login = () => {
-  const changeHandler = () => {};
+  const initialFormValues = {
+    username: "",
+    password: "",
+  };
+
+  const initialFormErrors = {
+    username: "",
+    password: "",
+  };
+
+  const [formValues, setValues] = useState(initialFormValues);
+  const [formErrors, setErrors] = useState(initialFormErrors);
+
+  const changeHandler = (name, value) => {
+    setValues({
+      ...formValues,
+      [name]: value,
+    });
+  };
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -16,6 +34,7 @@ const Login = () => {
             id="username"
             type="text"
             name="username"
+            value={formValues.username}
             onChange={changeHandler}
           />
         </label>
@@ -25,6 +44,7 @@ const Login = () => {
             id="password"
             type="password"
             name="password"
+            value={formValues.password}
             onChange={changeHandler}
           />
         </label>
