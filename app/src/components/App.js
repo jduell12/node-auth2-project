@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route, useHistory } from "react-router-dom";
 
 //components
-import { Login, Home, UsersList, PrivateRoute } from "./components/";
+import { Login, Home, UsersList, PrivateRoute } from "./index";
 
 function App() {
   const history = useHistory();
