@@ -1,6 +1,11 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
+import { BASE_URL } from "../utils/constants";
 
 const Register = () => {
+  const history = useHistory();
+
   const initialFormValues = {
     username: "",
     password: "",
@@ -20,6 +25,19 @@ const Register = () => {
 
   const submitForm = (eve) => {
     eve.preventDefault();
+
+    const user = {
+      username: formValues.username.trim(),
+      password: formValues.password.trim(),
+      department: formValues.department.trim(),
+    };
+
+    axios
+      .post(`${BASE_URL}/register`, user)
+      .then((res) => {
+        history.push("/login");
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <form onSubmit={submitForm}>
