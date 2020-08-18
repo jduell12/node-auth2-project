@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route, useHistory } from "react-router-dom";
+import { Button } from "reactstrap";
 
 //components
 import { Login, Home, UsersList, PrivateRoute, Register } from "./index";
@@ -12,7 +13,9 @@ function App() {
   };
   return (
     <div className="App">
-      <button onClick={logoutUser}>Logout</button>
+      <Button color="secondary" onClick={logoutUser}>
+        Logout
+      </Button>
       <h1>Get Users Using JWT</h1>
       <Switch>
         <Route exact path="/register" component={Register} />
