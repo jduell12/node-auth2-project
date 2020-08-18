@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route, useHistory } from "react-router-dom";
 
 //components
-import { Login, Home, UsersList, PrivateRoute } from "./index";
+import { Login, Home, UsersList, PrivateRoute, Register } from "./index";
 
 function App() {
   const history = useHistory();
@@ -15,7 +15,7 @@ function App() {
       <button onClick={logoutUser}>Logout</button>
       <h1>Get Users Using JWT</h1>
       <Switch>
-        {/* <Route exact path="/register" component={Register}/> */}
+        <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
         <PrivateRoute exact path="/private/list" component={UsersList} />
         <Route exact path="/" component={Home} />

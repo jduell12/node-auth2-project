@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div>
       <button onClick={() => history.push("/login")}>Login</button>
-      <button>Register</button>
+      <button onClick={() => history.push("/register")}>Register</button>
     </div>
   );
 };
