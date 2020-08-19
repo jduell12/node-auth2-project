@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
 const Login = () => {
   const history = useHistory();
@@ -47,29 +48,33 @@ const Login = () => {
   return (
     <div>
       <h2>Login</h2>
-      <form onSubmit={submitForm}>
-        <label htmlFor="username">
-          Username: &nbsp;
-          <input
-            id="username"
-            type="text"
-            name="username"
-            value={formValues.username}
-            onChange={changeHandler}
-          />
-        </label>
-        <label>
-          Password: &nbsp;
-          <input
-            id="password"
-            type="password"
-            name="password"
-            value={formValues.password}
-            onChange={changeHandler}
-          />
-        </label>
-        <button>Login</button>
-      </form>
+      <Form onSubmit={submitForm}>
+        <FormGroup>
+          <Label htmlFor="username">
+            Username: &nbsp;
+            <Input
+              id="username"
+              type="text"
+              name="username"
+              value={formValues.username}
+              onChange={changeHandler}
+            />
+          </Label>
+        </FormGroup>
+        <FormGroup>
+          <Label>
+            Password: &nbsp;
+            <Input
+              id="password"
+              type="password"
+              name="password"
+              value={formValues.password}
+              onChange={changeHandler}
+            />
+          </Label>
+        </FormGroup>
+        <Button color="success">Login</Button>
+      </Form>
     </div>
   );
 };

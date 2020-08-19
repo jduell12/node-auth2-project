@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
+import { Form, Button, FormGroup, Label, Input } from "reactstrap";
 
 const Register = () => {
   const history = useHistory();
@@ -40,39 +41,45 @@ const Register = () => {
       .catch((err) => console.log(err));
   };
   return (
-    <form onSubmit={submitForm}>
-      <label htmlFor="username">
-        Username: &nbsp;
-        <input
-          type="text"
-          id="username"
-          name="username"
-          value={formValues.username}
-          onChange={changeHandler}
-        />
-      </label>
-      <label htmlFor="password">
-        Password: &nbsp;
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={formValues.password}
-          onChange={changeHandler}
-        />
-      </label>
-      <label htmlFor="department">
-        Department: &nbsp;
-        <input
-          type="text"
-          id="department"
-          name="department"
-          value={formValues.department}
-          onChange={changeHandler}
-        />
-      </label>
-      <button>Register</button>
-    </form>
+    <Form onSubmit={submitForm}>
+      <FormGroup>
+        <Label htmlFor="username">
+          Username: &nbsp;
+          <Input
+            type="text"
+            id="username"
+            name="username"
+            value={formValues.username}
+            onChange={changeHandler}
+          />
+        </Label>
+      </FormGroup>
+      <FormGroup>
+        <Label htmlFor="password">
+          Password: &nbsp;
+          <Input
+            type="password"
+            id="password"
+            name="password"
+            value={formValues.password}
+            onChange={changeHandler}
+          />
+        </Label>
+      </FormGroup>
+      <FormGroup>
+        <Label htmlFor="department">
+          Department: &nbsp;
+          <Input
+            type="text"
+            id="department"
+            name="department"
+            value={formValues.department}
+            onChange={changeHandler}
+          />
+        </Label>
+      </FormGroup>
+      <Button color="success">Register</Button>
+    </Form>
   );
 };
 

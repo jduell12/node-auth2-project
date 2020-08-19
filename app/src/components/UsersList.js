@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 import UserCard from "./UserCard";
+import { CardDeck } from "reactstrap";
 
 const UsersList = () => {
   const [list, setList] = useState([]);
@@ -23,7 +24,11 @@ const UsersList = () => {
       {!list ? (
         <span></span>
       ) : (
-        list.map((user) => <UserCard key={user.id} userInfo={user} />)
+        <CardDeck>
+          {list.map((user) => (
+            <UserCard key={user.id} userInfo={user} />
+          ))}
+        </CardDeck>
       )}
     </div>
   );
