@@ -1,0 +1,31 @@
+html,
+body {
+  background: black;
+  color: white;
+  text-align: center;
+}
+
+body {
+  margin: 2% 10%;
+}
+
+label {
+  display: block;
+  margin: 2%;
+}
+
+button {
+  margin: 1%;
+}
+
+input {
+  margin: 3% 0;
+}
+
+.form-group {
+  margin: 0 35%;
+}
+
+.card {
+  margin: 2% 30%;
+}
